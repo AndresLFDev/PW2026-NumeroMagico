@@ -29,15 +29,14 @@ submitButton.addEventListener('click', () => {
     if (attempts >= 10) {
         setTimeout(() => {
             Swal.fire({
-                title: "Lo siento",
-                text: "El número era " + magicNumber + ". Has agotado tus intentos.",
+                title: "Sorry",
+                text: "The number was " + magicNumber + ". You have run out of attempts.",
                 icon: "error"
             });
         }, 0);
         resetGame();
         return;
     }
-    console.log('Botón clickeado');
     const number = numberInput.value;
     numberInput.value = '';
     numberCheck(number);
@@ -48,27 +47,26 @@ function numberCheck(number) {
         setTimeout(() => {
             Swal.fire({
                 title: "Error",
-                text: "El número debe estar entre 1 y 100",
+                text: "The number must be between 1 and 100",
                 icon: "error"
             });
         }, 0);
         return;
     }
     attempts++;
-    console.log("probando");
     if (number == magicNumber) {
         setTimeout(() => {
             Swal.fire({
-                title: "Correcto",
-                text: "El número era " + magicNumber,
+                title: "Correct",
+                text: "The number was " + magicNumber,
                 icon: "success"
             });
         }, 0);
     } else {
         if (number < magicNumber) {
-            history.push(attempts + '. El número es mayor que ' + number);
+            history.push(attempts + '. The number is greater than ' + number);
         } else {
-            history.push(attempts + '. El número es menor que ' + number);
+            history.push(attempts + '. The number is less than ' + number);
         }
     }
     showHistory();
@@ -83,7 +81,6 @@ function resetGame() {
     attempts = 0;
     numberInput.value = '';
     history = [];
-    console.log('Juego reiniciado');
     historyElement.innerHTML = '';
 }
 
