@@ -26,17 +26,6 @@ numberInput.addEventListener('keydown', (event) => {
 });
 
 submitButton.addEventListener('click', () => {
-    if (attempts >= 10) {
-        setTimeout(() => {
-            Swal.fire({
-                title: "Sorry",
-                text: "The number was " + magicNumber + ". You have run out of attempts.",
-                icon: "error"
-            });
-        }, 0);
-        resetGame();
-        return;
-    }
     const number = numberInput.value;
     numberInput.value = '';
     numberCheck(number);
@@ -68,6 +57,17 @@ function numberCheck(number) {
         } else {
             history.push(attempts + '. The number is less than ' + number);
         }
+    }
+    if (attempts >= 10) {
+        setTimeout(() => {
+            Swal.fire({
+                title: "Sorry",
+                text: "The number was " + magicNumber + ". You have run out of attempts.",
+                icon: "error"
+            });
+        }, 0);
+        resetGame();
+        return;
     }
     showHistory();
 }
